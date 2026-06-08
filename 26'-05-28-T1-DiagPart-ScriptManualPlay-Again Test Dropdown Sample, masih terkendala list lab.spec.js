@@ -1,0 +1,34 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.goto('https://dev-essensial.assist.id/');
+  await page.locator('html').click();
+  await page.goto('https://dev-essensial.assist.id/login');
+  await expect(page.locator('#username')).toBeVisible();
+  await page.locator('div').nth(4).click();
+  await page.locator('#username').click();
+  await page.locator('#username').fill('annisa.ghaisani@assist.id');
+  await page.locator('#username').press('Tab');
+  await page.locator('[data-test="input-password"]').fill('12345678');
+  await page.locator('[data-test="login-btn"]').click();
+  await page.locator('.jss420.jss414.jss872').click();
+  await page.goto('https://dev-essensial.assist.id/emr');
+  await page.getByRole('textbox', { name: 'Cari Pasien / No MR / No Ktp' }).fill('Pro-');
+  await page.getByRole('textbox', { name: 'Cari fitur' }).fill('ruju');
+  await page.getByRole('textbox', { name: 'Cari Cabang Prodia' }).fill('cideng');
+  await page.getByRole('textbox', { name: 'Diagnosa' }).fill('Random Diag');
+  await page.goto('https://dev-essensial.assist.id/emr');
+  await page.getByRole('textbox', { name: 'Cari Pasien / No MR / No Ktp' }).fill('Pro');
+  await page.getByRole('textbox', { name: 'Cari Pasien / No MR / No Ktp' }).press('Escape');
+  await page.getByRole('menuitem', { name: 'dr. Alexander' }).press('ControlOrMeta+f');
+  await page.goto('https://dev-essensial.assist.id/rawatJalan');
+  await page.getByRole('textbox', { name: 'Cari Nama Lengkap Pasien /' }).fill('PRO-');
+  await page.locator('[data-test="input-complaint"]').fill('Test PRodia');
+  await page.locator('[data-test="input-complaint"]').press('Alt+ArrowLeft');
+  await page.locator('[data-test="input-complaint"]').press('ArrowRight');
+  await page.locator('[data-test="input-complaint"]').press('Shift+ArrowRight');
+  await page.locator('[data-test="input-complaint"]').fill('Test Prodia');
+  await page.goto('https://dev-essensial.assist.id/emr');
+  await page.getByRole('textbox', { name: 'Cari fitur' }).fill('rujuk');
+  await page.getByRole('textbox', { name: 'Cari Cabang Prodia' }).fill('cideng');
+});
